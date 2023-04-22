@@ -23,16 +23,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MFQBYAPP extends javax.swing.JFrame {
     JFrame frontScreen;
+    DefaultTableModel TbModel; 
+    DefaultComboBoxModel CbModel =new DefaultComboBoxModel();
+    DefaultComboBoxModel CbModel2 =new DefaultComboBoxModel();
+    String FilePath="";
+    ArrayList<MFQBYdate> MFQBYList;
+    int currentRow =-1;
+    /**
+     * Creates new form MFQBYAPP
+     */
+    
     public MFQBYAPP(String name, Login aThis) {
         initComponents();
-        
         lbbName.setText(name);
         initTable();
         loadCbRegions();
         loadCbFood();
         frontScreen = aThis;
         this.setLocationRelativeTo(null);
-        tbMFQBY.setDefaultEditor(Object.class, null);// chỉ chọn trên bản ko cho chĩnh sữa
+        tbMFQBY.setDefaultEditor(Object.class, null);
         MFQBYList =new ArrayList<>();
         FilePath = "./src/Data/MFQBYdata.dat";
         boolean file = loadFile();
@@ -44,27 +53,7 @@ public class MFQBYAPP extends javax.swing.JFrame {
         this.setTitle("Managet Food Quantity by Year app");
         
     }
-    
-    
-    DefaultTableModel TbModel; 
-    DefaultComboBoxModel CbModel =new DefaultComboBoxModel();
-    DefaultComboBoxModel CbModel2 =new DefaultComboBoxModel();
-    String FilePath="";
-    ArrayList<MFQBYdate> MFQBYList;
-    int currentRow =-1;
-    
-    
-    /**
-     * Creates new form MFQBYAPP
-     */
-    
-    
-    public MFQBYAPP() {
-        initComponents();
-        
-        
-   
-    }
+      
  private void fillToTable(){
     TbModel.setRowCount (0);
     for(MFQBYdate M: MFQBYList){
@@ -95,6 +84,7 @@ public class MFQBYAPP extends javax.swing.JFrame {
      }
      cbRegions.setModel(CbModel);
     }
+    
     
     private void loadCbFood(){
      String[] RegionsLis = {"Chicken meat","Pork meat","Fish meat","Lamb meat"};
@@ -592,7 +582,7 @@ if(result == JOptionPane.YES_OPTION){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MFQBYAPP().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }
