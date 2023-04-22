@@ -123,7 +123,7 @@ public class Login extends javax.swing.JFrame {
         }
         
         if(login){
-         r.setVisible(true); // nếu đăng nhập thành công bị ẩn
+         r.setVisible(true);
          this.setVisible(false);
         }else{
         showmess("Login failed");
